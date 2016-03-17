@@ -42,6 +42,23 @@ func (log *Log) Fatal(args ...interface{}) {
 	fmt.Println(args[0])
 }
 
+func Nil(t T, ref interface{}) {
+	if ref != nil {
+		refType := reflect.TypeOf(ref)
+		f := "expected nil, but was %v: %v"
+		if refType.Kind() == reflect.String {
+			f = "expected nil, but was %v: '%v'"
+		}
+		fail(t, f, refType, ref)
+	}
+}
+
+func NotNil(t T, ref interface{}) {
+	if ref == nil {
+		fail(t, "expected not nil")
+	}
+}
+
 func Equal(t T, expected, actual interface{}) {
 	expectedType := reflect.TypeOf(expected)
 	actualType := reflect.TypeOf(actual)

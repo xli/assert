@@ -96,3 +96,51 @@ func ExampleNotEqual() {
 	//   	// Output:
 	//   	// values should be different, actual: ''
 }
+
+func ExampleNil() {
+	var log Log
+	Nil(&log, nil)
+	Nil(&log, "")
+	Nil(&log, 0)
+	Nil(&log, log)
+	// Output:
+	// expected nil, but was string: ''
+	// assert_test.go:103:
+	//   	var log Log
+	//   	Nil(&log, nil)
+	// =>	Nil(&log, "")
+	//   	Nil(&log, 0)
+	//   	Nil(&log, log)
+	//
+	// expected nil, but was int: 0
+	// assert_test.go:104:
+	//   	Nil(&log, nil)
+	//   	Nil(&log, "")
+	// =>	Nil(&log, 0)
+	//   	Nil(&log, log)
+	//   	// Output:
+	//
+	// expected nil, but was assert.Log: {2}
+	// assert_test.go:105:
+	//   	Nil(&log, "")
+	//   	Nil(&log, 0)
+	// =>	Nil(&log, log)
+	//   	// Output:
+	//   	// expected nil, but was string: ''
+}
+
+func ExampleNotNil() {
+	var log Log
+	NotNil(&log, nil)
+	NotNil(&log, "")
+	NotNil(&log, 0)
+	NotNil(&log, log)
+	// Output:
+	// expected not nil
+	// assert_test.go:134:
+	//   func ExampleNotNil() {
+	//   	var log Log
+	// =>	NotNil(&log, nil)
+	//   	NotNil(&log, "")
+	//   	NotNil(&log, 0)
+}
