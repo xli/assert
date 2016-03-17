@@ -1,6 +1,9 @@
 assert
 ================
 
+1. Simplest assertions for your Go test.
+2. Test failure also outputs assertion context.
+
 Example:
 
         import (
