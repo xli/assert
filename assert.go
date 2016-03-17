@@ -31,9 +31,14 @@ type T interface {
 }
 
 type Log struct {
+	count int
 }
 
 func (log *Log) Fatal(args ...interface{}) {
+	log.count++
+	if log.count > 1 {
+		fmt.Println("")
+	}
 	fmt.Println(args[0])
 }
 
