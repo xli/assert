@@ -76,7 +76,7 @@ func Equal(t T, expected, actual interface{}) {
 			f = "expected '%v', but was '%v'"
 		}
 	}
-	if expected != actual {
+	if !reflect.DeepEqual(expected, actual) {
 		fail(t, f, expected, actual)
 	}
 }
@@ -91,7 +91,7 @@ func NotEqual(t T, unexpected, actual interface{}) {
 	if actualType.Kind() == reflect.String {
 		f = "values should be different, actual: '%v'"
 	}
-	if unexpected == actual {
+	if reflect.DeepEqual(unexpected, actual) {
 		fail(t, f, actual)
 	}
 }

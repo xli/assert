@@ -144,3 +144,27 @@ func ExampleNotNil() {
 	//   	NotNil(&log, "")
 	//   	NotNil(&log, 0)
 }
+
+func ExampleEqual_map() {
+	var log Log
+	var m1 = map[string]string{
+		"hello": "world",
+	}
+	var m2 = map[string]string{
+		"hello": "world",
+	}
+	var m3 = map[string]string{
+		"hello": "w",
+	}
+	Equal(&log, m1, m1)
+	Equal(&log, m1, m2)
+	Equal(&log, m1, m3)
+	// Output:
+	// expected map[hello:world], but was map[hello:w]
+	// assert_test.go:161:
+	//   	Equal(&log, m1, m1)
+	//   	Equal(&log, m1, m2)
+	// =>	Equal(&log, m1, m3)
+	//   	// Output:
+	//   	// expected map[hello:world], but was map[hello:w]
+}
