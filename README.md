@@ -6,22 +6,27 @@ assert
 
 Example:
 
-        import (
-        	"github.com/xli/assert"
-        	"testing"
-        )
-        func TestHelloWorld(t *testing.T) {
-        	assert.Equal(t, "hello", "world")
-        }
-
+```go
+import (
+	"github.com/xli/assert"
+	"testing"
+)
+func TestHelloWorld(t *testing.T) {
+	assert.Equal(t, "hello", "world")
+}
+```
 Output:
 
-        // expected 'hello', but was 'world'
-        // <file name>.go:<line number>:
-        //   )
-        //   	func TestHelloWorld(t *testing.T) {
-        // =>	Equal(t, "hello", "world")
-        //   }
+```
+--- FAIL: TestHelloWorld (0.00s)
+	assert.go:112: expected 'hello', but was 'world'
+		x_test.go:9:
+		  
+		  func TestHelloWorld(t *testing.T) {
+		=>	assert.Equal(t, "hello", "world")
+		  }
+```
 
+[More examples](assert_test.go)
 
 License: Apache License v2
